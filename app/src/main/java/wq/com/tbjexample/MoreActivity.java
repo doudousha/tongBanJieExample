@@ -14,6 +14,8 @@ import butterknife.ButterKnife;
 import wq.com.tbjexample.BaseActivity;
 import wq.com.tbjexample.R;
 import wq.com.tbjexample.UserInfoActivity;
+import wq.com.tbjexample.dialog.CommonDialog;
+import wq.com.tbjexample.dialog.EvaluateDialog;
 import wq.com.tbjexample.widget.CommonItem;
 
 
@@ -129,8 +131,77 @@ public class MoreActivity extends BaseActivity implements OnClickListener {
         super.onDestroy();
     }
 
-    @Override
-    public void onClick(View view) {
 
+
+//    @Override
+//    public void onClick(View v) {
+//
+//    }
+
+
+
+
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.more_invest_mode:
+//				CheckPhoneActivity.start(getActivity(), true, "");
+              //  EvaluateRiskActivity.start(getActivity());
+                break;
+            case R.id.rl_vip_member:
+                break;
+            case R.id.rl_task_center:
+                break;
+            case R.id.tv_full_name:
+                new CommonDialog(this).builder()
+                        .setTitle("提示").setContentMsg("您尚未认证身份信息\n请添加银行卡进行身份认证")
+                        .setNegativeBtn("取消", new CommonDialog.OnNegativeListener() {
+                            @Override
+                            public void onNegative(View view) {
+//                                ToastUtils.showShort("取消");
+                            }
+                        })
+                        .setPositiveBtn("添加银行卡", new CommonDialog.OnPositiveListener() {
+                            @Override
+                            public void onPositive(View view) {
+//                                BankCardAddActivity.start(getActivity());
+                            }
+                        })
+                        .show();
+                break;
+            case R.id.more_help_and_feedback:
+//                HelpAndFeedbackActivity.start(getActivity());
+                break;
+            case R.id.more_score:
+                final EvaluateDialog evaluateDialog = new EvaluateDialog(this, R.style.EvaluateDialog);
+                evaluateDialog.setOnCancelListener(new EvaluateDialog.OnCancelListener() {
+                    @Override
+                    public void onCancel(View v) {
+                    }
+                });
+                evaluateDialog.setOnStoreListener(new EvaluateDialog.OnStoreListener() {
+                    @Override
+                    public void onStore(View v) {
+//                        MarketUtils.searchAppByPkgName(getActivity(), TONG_BAN_JIE_PACKAGE_NAME);
+                    }
+                });
+                evaluateDialog.setOnFeedbackListener(new EvaluateDialog.OnFeedbackListener() {
+                    @Override
+                    public void onFeedback(View v) {
+//                        FeedbackActivity.start(getActivity());
+                    }
+                });
+                evaluateDialog.show();
+                break;
+            case R.id.more_setting:
+//                SettingActivity.start(getActivity());
+                break;
+            case R.id.more_about:
+                break;
+            default:
+                break;
+        }
     }
+
 }

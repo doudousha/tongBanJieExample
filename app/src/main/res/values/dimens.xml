@@ -24,7 +24,7 @@
     <dimen name="table_text_size">14sp</dimen>
 
     <dimen name="common_view_large_margin">15.0dip</dimen>
-    <item type="dimen" name="common_view_large_padding">@dimen/common_view_large_margin</item>
+    <item name="common_view_large_padding" type="dimen">@dimen/common_view_large_margin</item>
     <dimen name="network_unusual_view_tip_margin_left">8.0dip</dimen>
     <dimen name="network_unusual_view_padding_left">13.0dip</dimen>
     <dimen name="myasset_head_padding_top">30.0dip</dimen>

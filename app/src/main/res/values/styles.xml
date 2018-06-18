@@ -57,6 +57,7 @@
         <item name="android:backgroundDimEnabled">false</item>
         <!-- 屏幕背景不变暗 -->
     </style>
+
     <style name="LoadingDialogDark" parent="@android:style/Theme.Dialog">
         <item name="android:windowFrame">@null</item>
         <!-- 边框 -->
@@ -109,6 +110,7 @@
         <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
         <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
     </style>
+
     <style name="CustomDarkDialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowBackground">@color/transparent</item>
         <item name="android:backgroundDimEnabled">true</item><!--activity不变暗-->
@@ -116,6 +118,7 @@
         <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
         <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
     </style>
+
     <style name="KeyboardDialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowBackground">@color/transparent</item>
         <item name="android:backgroundDimEnabled">false</item><!--activity不变暗-->
