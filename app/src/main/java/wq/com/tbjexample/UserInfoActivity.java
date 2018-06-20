@@ -11,6 +11,10 @@ import android.view.ViewGroup;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import wq.com.tbjexample.dialog.BaseWheelFragment;
+import wq.com.tbjexample.dialog.CommonWheelSelectedDialog;
+import wq.com.tbjexample.dialog.InputDialog;
+import wq.com.tbjexample.dialog.WeightWheelSelectedDialog;
 import wq.com.tbjexample.widget.CommonItem;
 import wq.com.tbjexample.widget.TitleBarView;
 
@@ -99,9 +103,61 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
+		switch (v.getId()) {
+			case R.id.userinfo_nick:
+				inputNickName();
+				break;
+			case R.id.userinfo_tall:
+				tallSelected();
+				break;
+			case R.id.userinfo_weight:
+				weightSelected();
+				break;
 
+			default:
+				break;
+		}
 	}
 
+	private void inputNickName() {
+		InputDialog inputDialog = new InputDialog(this).builder();
+		inputDialog.getContentView().setSingleLine(true);
+		inputDialog.setTitle(mNick.getSummaryText().toString())
+				.setPositiveBtn("确定", new InputDialog.OnPositiveListener() {
+					@Override
+					public void onPositive(View view, String inputMsg) {
+						mNick.setDetailText(inputMsg);
+					}
+				})
+				.setNegativeBtn("取消", null)
+				.setContentMsg(mNick.getDetailText().toString());
+		inputDialog.getContentView().setFilters(new InputFilter[]{new InputFilter.LengthFilter(15)});
+		inputDialog.show();
+	}
 
+	private void tallSelected() {
+		CommonWheelSelectedDialog dialog = CommonWheelSelectedDialog.newInstance(this, null, ViewGroup.LayoutParams.WRAP_CONTENT, CommonWheelSelectedDialog.Type.Tall);
+		dialog.show(getSupportFragmentManager(), "CommonWheelSelectedDialog_tall");
+		dialog.setSelection(mTall.getDetailText().toString());
+		dialog.setOnSureListener(new BaseWheelFragment.OnSureListener() {
+			@Override
+			public void doSure(String item) {
+			//	ToastUtils.showShort(item);
+				mTall.setDetailText(item);
+			}
+		});
+	}
 
+	private void weightSelected() {
+		WeightWheelSelectedDialog dialog = WeightWheelSelectedDialog.newInstance(this, null, ViewGroup.LayoutParams.WRAP_CONTENT);
+		dialog.show(getSupportFragmentManager(), "WeightWheelSelectedDialog");
+		dialog.setSelection(mWeight.getDetailText().toString());
+		dialog.setOnSureListener(new BaseWheelFragment.OnSureListener() {
+			@Override
+			public void doSure(String item) {
+				//ToastUtils.showShort(item);
+				mWeight.setDetailText(item);
+			}
+		});
+	}
 }

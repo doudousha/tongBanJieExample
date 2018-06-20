@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/common_view_small_larger_padding"
                 android:background="@drawable/shape_bg_more_level"
-                android:visibility="gone">
+                >
 
                 <ImageView
                     android:id="@+id/iv_level_icon"
@@ -55,6 +55,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="3.0dip"
+                    android:background="@drawable/level"
                     android:contentDescription="@null" />
 
                 <TextView
@@ -66,6 +67,7 @@
                     android:paddingRight="3.0dip"
                     android:paddingTop="2.0dip"
                     android:textColor="@color/white"
+                    android:text="LV1"
                     android:textSize="@dimen/common_font_size_smaller" />
             </LinearLayout>
         </LinearLayout>
